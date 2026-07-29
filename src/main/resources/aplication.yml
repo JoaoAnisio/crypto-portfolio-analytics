@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: crypto-portfolio
+    
+  datasource:
+    url: jdbc:postgresql://localhost:5432/cryptoportfolio
+    username: ${DB_USER:crypto} #se não existir vai usar crypto, o projeto roda local sem configuração, mas aceita credenciais reais em deploy sem nenhuma alteração de código
+    password: ${DB_PASSWORD:crypto}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate #não cria tabelas, apenas valida se elas existem
+    open-in-view: false #não mantém transações abertas desnecessariamente
+    properties:
+      hibernate:
+        format_sql: true #formata o sql para ficar mais legível
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  level:
+    org.hibernate.SQL: debug
