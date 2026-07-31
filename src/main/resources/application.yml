@@ -1,4 +1,7 @@
 spring:
+  config:
+    import: optional:file:.env[.properties]
+
   application:
     name: crypto-portfolio
     
@@ -33,3 +36,11 @@ management:
 logging:
   level:
     org.hibernate.SQL: debug
+
+coingecko:
+  base-url: https://api.coingecko.com/api/v3
+  api-key: ${COINGECKO_API_KEY:}
+  vs-currency: brl
+  connect-timeout: 3s
+  read-timeout: 5s
+  cache-ttl: 60s    
