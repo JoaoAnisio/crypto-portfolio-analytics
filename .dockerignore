@@ -1,0 +1,8 @@
+target/
+.git/
+.github/
+.env
+.idea/
+.vscode/
+*.md
+compose.yaml

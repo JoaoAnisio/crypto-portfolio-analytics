@@ -17,10 +17,17 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import java.net.URI;
 import java.util.List;
 import java.util.UUID;
 
+@Tag(name = "Transações", description = "Registro de compras e vendas de criptoativos")
 @RestController
 @RequestMapping("/transactions")
 @RequiredArgsConstructor
@@ -28,6 +35,15 @@ public class TransactionController {
 
     private final TransactionService transactionService;
 
+    @Operation(
+            summary = "Registra uma transação",
+            description = "Cria uma compra ou venda. Vendas acima do saldo disponível são rejeitadas.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "Transação registrada"),
+            @ApiResponse(responseCode = "400", description = "Payload inválido", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Ativo não encontrado", content = @Content),
+            @ApiResponse(responseCode = "422", description = "Saldo insuficiente", content = @Content)
+    })
     @PostMapping
     public ResponseEntity<TransactionResponse> create(
             @Valid @RequestBody TransactionRequest request,

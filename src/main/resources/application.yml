@@ -50,3 +50,11 @@ portfolio:
     enabled: true
     # Todo dia às 23:50 (horário de Brasília)
     cron: "0 50 23 * * *"
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+  api-docs:
+    path: /v3/api-docs 
