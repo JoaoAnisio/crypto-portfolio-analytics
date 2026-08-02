@@ -20,4 +20,9 @@ public interface TransactionRepository extends JpaRepository<Transaction, UUID> 
     //Busca por id já trazendo o Asset associado, para permitir a montagem do DTO fora do contexto transacional
     @Query("SELECT t FROM Transaction t JOIN FETCH t.asset WHERE t.id = :id")
     Optional<Transaction> findByIdWithAsset(@Param("id") UUID id);
+
+    //Todas as transações em ordem cronológica, com o Asset carregado
+    //A ordem importa: o custo médio é calculado aplicando as operações em sequência.
+    @Query("SELECT t FROM Transaction t JOIN FETCH t.asset ORDER BY t.executedAt ASC, t.createdAt ASC")
+    List<Transaction> findAllWithAssetChronological();
 }
