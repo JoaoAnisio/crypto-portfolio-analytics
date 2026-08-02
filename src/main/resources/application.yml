@@ -43,4 +43,10 @@ coingecko:
   vs-currency: brl
   connect-timeout: 3s
   read-timeout: 5s
-  cache-ttl: 60s    
+  cache-ttl: 60s 
+
+portfolio:
+  snapshot:
+    enabled: true
+    # Todo dia às 23:50 (horário de Brasília)
+    cron: "0 50 23 * * *"
