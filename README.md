@@ -10,8 +10,10 @@ API REST para acompanhamento de portfólio de criptoativos. Calcula posição po
 ganho de capital), separa resultado **realizado** de **não realizado**, e mantém
 histórico diário automatizado com cotações de mercado em tempo real.
 
-🔗 **[Documentação interativa (Swagger)](https://sua-app.onrender.com/swagger-ui.html)**
+🔗 **[Documentação interativa (Swagger)](https://crypto-portfolio-analytics.onrender.com/swagger-ui.html)**
 
+> Hospedado em plano gratuito: o serviço hiberna após inatividade e o primeiro
+> acesso pode levar ~40 segundos.
 ---
 
 ## O problema
