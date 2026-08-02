@@ -1,0 +1,10 @@
+portfolio:
+  snapshot:
+    enabled: false
+
+coingecko:
+  api-key: ""
+
+logging:
+  level:
+    org.hibernate.SQL: warn

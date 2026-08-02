@@ -25,4 +25,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, UUID> 
     //A ordem importa: o custo médio é calculado aplicando as operações em sequência.
     @Query("SELECT t FROM Transaction t JOIN FETCH t.asset ORDER BY t.executedAt ASC, t.createdAt ASC")
     List<Transaction> findAllWithAssetChronological();
+
+    List<Transaction> findByAssetIdOrderByExecutedAtAsc(UUID assetId);
 }

@@ -68,15 +68,13 @@ public class TransactionService {
         transactionRepository.deleteById(id);
     }
 
-    //Impede venda de quantidade superior à posição atual do ativo.
-    //O saldo é o somatório das compras menos as vendas já registradas.
+    //Impede venda acima da posicao atual, reaproveitando a mesma logica de acumulacao usada no calculo do portfolio.
     private void validateSufficientBalance(Asset asset, BigDecimal quantityToSell) {
-        BigDecimal currentBalance = transactionRepository
-                .findByAssetIdOrderByExecutedAtDesc(asset.getId()).stream()
-                .map(t -> t.getType() == TransactionType.BUY
-                        ? t.getQuantity()
-                        : t.getQuantity().negate())
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        PositionAccumulator accumulator = new PositionAccumulator(asset);
+        transactionRepository.findByAssetIdOrderByExecutedAtAsc(asset.getId())
+                .forEach(accumulator::apply);
+
+        BigDecimal currentBalance = accumulator.quantity();
 
         if (currentBalance.compareTo(quantityToSell) < 0) {
             throw new BusinessException(
