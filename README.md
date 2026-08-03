@@ -12,6 +12,8 @@ histórico diário automatizado com cotações de mercado em tempo real.
 
 🔗 **[Documentação interativa (Swagger)](https://crypto-portfolio-analytics.onrender.com/swagger-ui.html)**
 
+![Demonstração da API](docs/demo.gif)
+
 > Hospedado em plano gratuito: o serviço hiberna após inatividade e o primeiro
 > acesso pode levar ~40 segundos.
 ---
