@@ -40,7 +40,7 @@ Esta API resolve isso separando as duas dimensões do resultado:
 |---|---|
 | Linguagem | Java 21 |
 | Framework | Spring Boot 4.1 |
-| Persistência | PostgreSQL 16 + Spring Data JPA |
+| Persistência | PostgreSQL + Spring Data JPA |
 | Migrations | Flyway |
 | Cache | Redis |
 | Cotações | CoinGecko API |
