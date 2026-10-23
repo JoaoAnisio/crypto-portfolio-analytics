@@ -15,7 +15,7 @@ histórico diário automatizado com cotações de mercado em tempo real.
 ![Demonstração da API](docs/demo.gif)
 
 > Hospedado em plano gratuito: o serviço hiberna após inatividade e o primeiro
-> acesso pode levar ~40 segundos.
+> acesso pode levar de 2 a 3 minutos.
 ---
 
 ## O problema

@@ -27,6 +27,9 @@ spring:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
 
+server:
+  port: ${PORT:8080} #o Render injeta a porta via PORT; local continua 8080
+
 management:
   endpoints:
     web:
